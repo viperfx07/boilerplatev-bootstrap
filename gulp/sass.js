@@ -25,7 +25,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
         includePaths: [
           path.join(dirs.source, dirs.styles),
           path.join(dirs.source, dirs.modules),
-          'node_modules/foundation-sites/scss'
+          'node_modules/bootstrap-sass/assets/stylesheets'
         ]
       }).on('error', plugins.sass.logError))
       .pipe(plugins.postcss([

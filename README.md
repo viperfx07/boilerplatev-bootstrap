@@ -1,5 +1,5 @@
 #BoilerplateV 
-An extensive HTML5 framework for building robust web sites utilising [Jade](http://jade-lang.com/), SCSS/PostCSS with [Gulp](http://gulpjs.com). The boilerplate is based on [Yeogurt Generator](https://github.com/larsonjj/generator-yeogurt). The difference is, instead of Browserify, it uses Webpack. By default, it uses Foundation. For Boostrap lovers, you can checkout the [**boilerplate**](https://github.com/viperfx07/boilerplatev/tree/feature/bootstrap) feature branch.
+An extensive HTML5 framework for building robust web sites utilising [Jade](http://jade-lang.com/), SCSS/PostCSS with [Gulp](http://gulpjs.com). The boilerplate is based on [Yeogurt Generator](https://github.com/larsonjj/generator-yeogurt). The difference is, instead of Browserify, it uses Webpack.
 
 >Notes:
 >
@@ -66,7 +66,7 @@ It will be generated using Jade
 It will be generated using SCSS with the concept of BEM (Block Element Modifier) with ITCSS (Inverted Triangle CSS)
 
 ###Framework
-[Foundation 6](http://foundation.zurb.com/sites/docs/) (as the time of writing). If you want to use Bootstrap, use the **bootstrap** feature branch.
+[Bootstrap](http://getbootstrap.com/).
 
 Reason:
 
@@ -89,10 +89,11 @@ The structure:
 2. **Tools** - Globally available tools, public mixins and helper functions.
 3. **Generic** - Ground-zero styles (normalize.css, reset, box-sizing). Low specificity, far-reaching.
 4. **Base** - Unclassed HTML elements (H1-H6, basic links, lists, etc). Last layer we see type selectors (e.g. a{}, blockqoute {}).
-5. **Objects** - Cosmetic-free design patterns, OOCSS, begin using classes exclusively, agnostically named (e.g. .ui-list {}).
-6. **Components** - Designed components, chunks of UI, still only using classes, more explicitly named (e.g. .product-list {}).
-7. **Theme** (optional).
-8. **Win/Trumps** - Helpers and overrides. Usually carry !important.
+5. **Utilities** - generic utility, not an object. It's like win but without !important
+6. **Objects** - Cosmetic-free design patterns, OOCSS, begin using classes exclusively, agnostically named (e.g. .ui-list {}).
+7. **Components** - Designed components, chunks of UI, still only using classes, more explicitly named (e.g. .product-list {}).
+8. **Theme** (optional).
+9. **Win/Trumps** - Helpers and overrides. Usually carry !important.
 
 **ITCSS** benefits:
 * Manages source order
@@ -154,9 +155,6 @@ Starts up a development server that watches files and automatically reloads them
 
 1. (FIXED) Source map is not correct.
 > This is fixed by changing the outputStyle of the sass to default.
-
-2. Sometimes, browsersync doesn't reload, even though there's no error
-
 
 ## Multiple Sites
 

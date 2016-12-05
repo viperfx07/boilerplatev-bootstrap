@@ -12,7 +12,7 @@
     "browser-sync": "latest",
     "del": "latest",
     "foldero": "latest",
-    "foundation-sites": "latest",
+    "bootstrap-sass": "latest",
     "gulp": "latest",
     "gulp-changed": "latest",
     "gulp-consolidate": "latest",
