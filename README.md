@@ -1,5 +1,5 @@
 #BoilerplateV 
-An extensive HTML5 framework for building robust web sites utilising [Jade](http://jade-lang.com/), SCSS/PostCSS with [Gulp](http://gulpjs.com). The boilerplate is based on [Yeogurt Generator](https://github.com/larsonjj/generator-yeogurt). The difference is, instead of Browserify, it uses Webpack.
+An extensive HTML5 framework for building robust web sites utilising [Pug](https://pugjs.org), SCSS/PostCSS with [Gulp](http://gulpjs.com). The boilerplate is based on [Yeogurt Generator](https://github.com/larsonjj/generator-yeogurt). The difference is, instead of Browserify, it uses Webpack. By default, it uses Foundation. For Boostrap lovers, you can checkout the [**boilerplatev-bootstrap**](https://github.com/viperfx07/boilerplatev-bootstrap).
 
 >Notes:
 >
@@ -25,22 +25,22 @@ An extensive HTML5 framework for building robust web sites utilising [Jade](http
 |   ├── _data                  # JSON/YAML files that add data to templates
 |   ├── _img		           # Images
 |   ├── _layouts               # Layout structure for app
-|   |   └── global.jade
+|   |   └── global.pug
 |   ├── _modules               # Reusable modules (curretly not implemented)
 |   |   └── link
 |   |       ├── __tests__
 |   |       |   └── link.spec.js
-|   |       ├── link.jade
+|   |       ├── link.pug
 |   |       ├── link.js
 |   |       └── link.scss
 |   ├── _partials             # Reusable jade partials
-|   ├── _mixins               # Jade mixins
+|   ├── _mixins               # Pug mixins
 |   ├── _css                  # Global css, mixins, variables, etc
 |   |   └── main.scss         # Main stylesheet (import everything to this file)
 |   ├── _js					  # Global js, base classes, etc
 |   |   └── main.js           # Main bootstrap file
 |   ├── _fonts                # Fonts (including icon font)
-|   ├── index.jade            # Homepage template
+|   ├── index.pug             # Homepage template
 |   ├── favicon.ico
 |   └── robots.txt
 ├── gulpfile.babel.js         # Gulp task configuration
@@ -60,7 +60,7 @@ Now you can run the following gulp tasks:
 You can learn more about what tasks are available in the [gulp tasks](#gulp-workflow) section.
 
 ##HTML
-It will be generated using Jade
+It will be generated using Pug(was Pug)
 
 ##CSS
 It will be generated using SCSS with the concept of BEM (Block Element Modifier) with ITCSS (Inverted Triangle CSS)
@@ -122,6 +122,13 @@ Although the template is similar to **FontAwesome**,  don't use it like .fa.fa-[
 
 I'm using [postcss-sprites](https://github.com/2createStudio/postcss-sprites) plugin to generate a sprite. All you need to do is to put all the images that you want to generate as a sprite in src/_img/sprite/ folder and it will be generated as **sprite.png**. If you want to use it, you can use the sprite mixin **m-sprite(filename)**.
 
+### PostCSS plugins
+1. [Autoprefixer](https://github.com/postcss/autoprefixer) - Parse CSS and add vendor prefixes to rules by Can I Use 
+2. [Rucksack](http://simplaio.github.io/rucksack/) - A little bag of CSS superpowers
+3. [postcss-pxtorem](https://github.com/cuth/postcss-pxtorem) - Convert pixel units to rem (root em) units using PostCSS
+4. [postcss-import](https://github.com/postcss/postcss-import) - PostCSS plugin to inline @import rules content
+5. [postcss-sprites](https://github.com/2createStudio/postcss-sprites) - Generate sprites from stylesheets.
+
 ### Tools/Mixins/Functions
 **Important**:
 
@@ -138,7 +145,7 @@ It hasn't had any setup the task to generate more than 1 sprite. Please see [her
 ## Gulp Workflow
 
 ### `gulp --production`
-Runs [`gulp test`](#gulp-test) and builds out an optimized site through compilation of preprocessors (Jade, Sass, etc), minification of CSS and HTML, uglification of Javascript, and optimization of images.
+Runs [`gulp test`](#gulp-test) and builds out an optimized site through compilation of preprocessors (Pug, Sass, etc), minification of CSS and HTML, uglification of Javascript, and optimization of images.
 
 ### `gulp serve`
 Starts up a development server that watches files and automatically reloads them to the browser when a change is detected.
@@ -156,6 +163,9 @@ Starts up a development server that watches files and automatically reloads them
 1. (FIXED) Source map is not correct.
 > This is fixed by changing the outputStyle of the sass to default.
 
+2. Sometimes, browsersync doesn't reload, even though there's no error
+
+
 ## Multiple Sites
 
 1. **gulp/copy.js** has **copy_otherWWW** which is configured in package.json
@@ -163,21 +173,7 @@ This will allow the users to copy the tmp directory to single or multiple other 
 To run this task, type `gulp copy_otherWWW`. But before making and copying js/css to multiple directories/sites, make sure you check the other two tips below. This will prevent duplication that gives you a headache and hard to manage codes.
 
 2. **_CSS-wise**, it's BEST to use **ONE main.css** for all of the sites and using theme for specific site.
-For example, **siteA** has a theme class **theme--siteA**, while siteB has **theme--siteB** class in the body so that the users can just those classes. **Folder structure-wise**, it's better to structure them like this:
-
-```
-src
-	css
-		07_theme
-			siteA
-				04_base			-- base specifically for siteA theme (optional, if needed) 
-				06_components	-- components specifically for siteB theme
-				..etc..
-			siteB
-				04_base			-- base specifically for siteB theme (optional, if needed) 
-				06_components	-- components specifically for siteB theme
-				..etc..
-```
+For example, **siteA** has a theme class **theme--siteA**, while siteB has **theme--siteB** class in the body so that the users can just those classes
 
 3. **JS-wise**, it's BEST to use **ONE main.js** for all of the sites and using **require** to import the specific-site script into the **main.js asynchronously**.
 For example, if you look on **_src/js**, there's a folder called partials. Inside it, we can have files / folders depend how you want to structure it, and you can use require as per example to include them asyncly in **main.js**.
