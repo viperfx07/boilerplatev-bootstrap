@@ -1,0 +1,3 @@
+@mixin m-zindex($name){
+	z-index: map-get($zindex, $name);
+}

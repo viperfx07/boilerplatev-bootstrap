@@ -1,0 +1,3 @@
+@each $name, $path in $fonts{
+  @include m-font-face($name, $path);
+}

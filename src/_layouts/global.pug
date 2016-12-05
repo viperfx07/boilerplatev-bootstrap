@@ -1,0 +1,73 @@
+//- Custom Configuration
+block config
+	//- Setup site's base URL to match the "baseUrl" key within `package.json`
+	//- Otherwise default to relative pathing
+	- var baseUrl = config.baseUrl || './'
+
+block childConfig
+
+block includes
+	include ../_mixins/ulnav
+	include ../_mixins/bgimgurl
+
+doctype
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9">
+<![endif]-->
+!= "<!--[if gt IE 8]><!-->"
+html.no-js
+	!= "<!--<![endif]-->"
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		
+		meta(content="#",name="description")
+		meta(content="Victor Tanudjaja",name="author")
+		
+		//-# Mobile Viewport Scaling
+		meta(content="True",name="HandheldFriendly")
+		meta(content="320",name="MobileOptimized")
+		meta(content="width=device-width,initial-scale=1",name="viewport")
+		meta(content="no",name="user-scalable")
+		meta(content="on",http-equiv="cleartype")
+		//-#
+
+		title BoilerplateV
+		
+		//- Icons
+		link(rel='icon', type="image/x-icon", href='/favicon.ico')
+		link(rel='apple-touch-icon', href="assets/apple-touch-icon.png")
+		
+		//- CSS
+		link(rel='stylesheet', href='assets/css/main.css')
+	body
+		header.header
+			block header
+				include ../_partials/header.pug
+		main
+			block content
+
+		footer.footer
+			block footer
+				include ../_partials/footer.pug
+		
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js")
+		<!--[if lt IE 10]>
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/flexibility/1.0.6/flexibility.js")
+		<![endif]-->
+		script(src="https://cdn.polyfill.io/v2/polyfill.min.js")
+		
+		//- how to make it read the arguments
+		script(src= baseUrl + 'assets/js/main.js')
+		//- Google Analytics: change UA-XXXXX-X to be your site's ID.
+		//-
+			script
+			(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+			function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+			e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+			e.src='//www.google-analytics.com/analytics.js';
+			r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+			ga('create','UA-XXXXX-X');ga('send','pageview');

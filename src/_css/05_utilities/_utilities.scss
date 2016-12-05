@@ -1,0 +1,17 @@
+.u{
+	&-sprite-test{
+		@include m-sprite(rounded-plus);
+	}
+	
+	&-bgimg{
+		@include m-bgimg-with-ratio(16 9);
+	}
+
+	&-text{
+		@each $c, $hex in $colors{
+			&-#{$c}{
+				color: $hex;
+			}
+		}
+	}
+}
