@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import foldero from 'foldero';
 import pug from 'pug';
+import pugIncludeGlob from 'pug-include-glob';
 
 export default function(gulp, plugins, args, config, taskTarget, browserSync, dirs) {
   let dest = path.join(taskTarget);
@@ -56,7 +57,8 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
         site: {
           data: siteData
         }
-      }
+      },
+      plugins: [ pugIncludeGlob({ /* options */ }) ] 
     }))
     .pipe(gulp.dest(dest))
     .on('end', browserSync.reload);

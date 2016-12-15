@@ -9,13 +9,15 @@ An extensive HTML5 framework for building robust web sites utilising [Pug](https
 >- To install latest and save to dev a module => npm i -D <module>@latest
 
 ##Requirements
-1. Node (npm) = use the latest version
+1. Node = use the latest version
 2. Python (this is required by imagemin, but without it, it works just fine)
-3. Gulp (run **npm i -g gulp** if you don't have it)
+3. Yarn (alternative of npm but faster, so it's recommended to use)
+4. Gulp (run **npm i -g gulp** if you don't have it)
 
 ##Getting Started
-1. npm install
-2. gulp (add --production for the production (minified) codes)
+1. npm install -g **yarn** (if you have no **yarn** installed)
+2. yarn 
+3. gulp (add --production for the production (minified) codes)
 
 ```
 ├── gulp/                      # Folder for gulp tasks
@@ -51,8 +53,6 @@ Congratulations! You should now have successfully created a Yeogurt project and 
 
 Now you can run the following gulp tasks:
 
-- `gulp serve` for previewing your site/app on a development server.
-- `gulp serve --production` for previewing a production version of your site/app.
 - `gulp` for testing and building a development version of your site.
 - `gulp --production` same as `gulp` but builds a production version of your site.
 - `gulp test` for linting your scripts and running unit tests.

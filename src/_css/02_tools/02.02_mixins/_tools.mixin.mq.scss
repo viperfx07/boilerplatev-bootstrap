@@ -1,6 +1,66 @@
-// Shorthand for Foundation's breakpoint mixin
-@mixin mq($value){
-	@include breakpoint($value){
-		@content;
-	}
+@mixin m-bp($min: 0, $max: 0) {
+    $type: type-of($min);
+    @if $type==string {
+        @if $min==xs {
+            @media (max-width: f-rem(767px)) {
+                @content;
+            }
+        }
+        @else if $min==sm {
+            @media (min-width: f-rem(768px)) {
+                @content;
+            }
+        }
+        @else if $min==sm-md {
+            @media (min-width: f-rem(768px)) and (min-width: f-rem(991px))  {
+                @content;
+            }
+        }
+        @else if $min==md {
+            @media (min-width: f-rem(992px)) {
+                @content;
+            }
+        }
+        @else if $min==md-lg{
+            @media (min-width: f-rem(992px)) and (min-width: f-rem(1199px))  {
+                @content;
+            }
+        }
+        @else if $min==lg {
+            @media (min-width: f-rem(1200px)) {
+                @content;
+            }
+        }
+         @else if $min==lg-xl {
+            @media (min-width: f-rem(1200px)) {
+                @content;
+            }
+        }
+        @else if $min==xl {
+            @media (min-width: f-rem(1400px)) {
+                @content;
+            }
+        }
+    }
+    @else if $type==number {
+        $query: "all" !default;
+        @if $min !=0 and $max !=0 {
+            $query: "(min-width: #{$min}) and (max-width: #{$max})";
+        }
+        @else if $min !=0 and $max==0 {
+            $query: "(min-width: #{$min})";
+        }
+        @else if $min==0 and $max !=0 {
+            $query: "(max-width: #{$max})";
+        }
+        @media #{$query} {
+            @content;
+        }
+    }
+}
+
+@mixin mq($min:0, $max: 0){
+    @include m-bp($min, $max){
+        @content;
+    }
 }
