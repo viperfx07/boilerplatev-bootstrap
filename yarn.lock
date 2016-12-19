@@ -4138,7 +4138,7 @@ jpegtran-bin@^3.0.0:
     bin-wrapper "^3.0.0"
     logalot "^2.0.0"
 
-jquery-match-height@^0.7.0:
+jquery-match-height@latest:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/jquery-match-height/-/jquery-match-height-0.7.0.tgz#351e51f161ccef7de08ae64ada8c8dc5c1890cca"
 
@@ -6827,7 +6827,7 @@ rsvp@^3.0.13, rsvp@^3.0.18:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-3.3.3.tgz#34633caaf8bc66ceff4be3c2e1dffd032538a813"
 
-rucksack-css@^0.9.1:
+rucksack-css@latest:
   version "0.9.1"
   resolved "https://registry.yarnpkg.com/rucksack-css/-/rucksack-css-0.9.1.tgz#da7eba4c67bd05b00cbf4c834305c5fe55375de1"
   dependencies:
@@ -7030,7 +7030,7 @@ simple-is@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/simple-is/-/simple-is-0.2.0.tgz#2abb75aade39deb5cc815ce10e6191164850baf0"
 
-simplestatemanager@^3.4.0:
+simplestatemanager@latest:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/simplestatemanager/-/simplestatemanager-3.4.0.tgz#4a474125f34f4061f46dd05828f63aa998fe06eb"
 

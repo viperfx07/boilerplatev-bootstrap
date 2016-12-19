@@ -14,7 +14,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
 
       // Scripts
       gulp.watch([
-        path.join(dirs.source, dirs.scripts, '**/*.js')], ['webpack']);
+        path.join(dirs.source, dirs.scripts, '**/*.js')], ['webpack']).on('change', browserSync.reload);
 
       // Icon font
       gulp.watch([

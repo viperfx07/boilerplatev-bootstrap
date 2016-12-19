@@ -7,13 +7,19 @@
     &-border-0 {
         border: 0;
     }
+
+    &-m-0{
+        margin: 0;
+    }
+
+    &-p-0{
+        padding: 0;
+    }
     
-    // {{u-w-100p}}
-    &-w-100p{
+    &-width-100p{
         width: 100%;
     }
-	
-	// {{u-list-unstyled}}
+
     &-list-unstyled{
         list-style-type: none;
         margin: 0;
@@ -107,7 +113,9 @@
             vertical-align: bottom;
         }
     }
-
+    // ==========================================================================
+    // Float
+    // ==========================================================================
     &-fl{
         &-l{
             float: left;
@@ -115,6 +123,26 @@
 
         &-r{
             float: right;
+        }
+    }
+
+    &-ta{
+        &-r{
+            text-align: right;
+        }
+
+        &-c{
+            text-align: center;
+        }
+
+        &-l{
+            text-align: left;
+        }
+    }
+
+    &-pos{
+        &-r{
+            position: relative;
         }
     }
 }

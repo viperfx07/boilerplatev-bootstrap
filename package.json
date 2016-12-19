@@ -44,7 +44,7 @@
     "postcss-sprites": "latest",
     "pug": "latest",
     "pug-include-glob": "latest",
-    "rucksack-css": "^0.9.1",
+    "rucksack-css": "latest",
     "webpack": "beta",
     "webpack-stream": "latest",
     "wrench": "latest"
@@ -80,7 +80,7 @@
     }
   },
   "dependencies": {
-    "jquery-match-height": "^0.7.0",
-    "simplestatemanager": "^3.4.0"
+    "jquery-match-height": "latest",
+    "simplestatemanager": "latest"
   }
 }

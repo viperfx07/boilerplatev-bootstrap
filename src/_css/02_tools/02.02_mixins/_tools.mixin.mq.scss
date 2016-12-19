@@ -2,42 +2,57 @@
     $type: type-of($min);
     @if $type==string {
         @if $min==xs {
-            @media (max-width: f-rem(767px)) {
+            @media (max-width: f-rem($screen-xs-max)) {
                 @content;
             }
         }
         @else if $min==sm {
-            @media (min-width: f-rem(768px)) {
+            @media (min-width: f-rem($screen-sm)) {
                 @content;
             }
         }
         @else if $min==sm-md {
-            @media (min-width: f-rem(768px)) and (min-width: f-rem(991px))  {
+            @media (min-width: f-rem($screen-sm)) and (max-width: f-rem($screen-sm-max))  {
                 @content;
             }
         }
         @else if $min==md {
-            @media (min-width: f-rem(992px)) {
+            @media (min-width: f-rem($screen-md)) {
                 @content;
             }
         }
         @else if $min==md-lg{
-            @media (min-width: f-rem(992px)) and (min-width: f-rem(1199px))  {
+            @media (min-width: f-rem($screen-md)) and (max-width: f-rem($screen-md-max))  {
                 @content;
             }
         }
         @else if $min==lg {
-            @media (min-width: f-rem(1200px)) {
+            @media (min-width: f-rem($screen-lg)) {
                 @content;
             }
         }
          @else if $min==lg-xl {
-            @media (min-width: f-rem(1200px)) {
+            @media (min-width: f-rem($screen-lg) and (max-width: f-rem(1400px)) {
                 @content;
             }
         }
         @else if $min==xl {
             @media (min-width: f-rem(1400px)) {
+                @content;
+            }
+        }
+        @else if $min=sm-max{
+            @media (max-width: f-rem($screen-sm-max)){
+                @content;
+            }
+        }
+        @else if $min=md-max{
+            @media (max-width: f-rem($screen-md-max)){
+                @content;
+            }
+        }
+        @else if $min=lg-max{
+            @media (max-width: f-rem(1399px)){
                 @content;
             }
         }
