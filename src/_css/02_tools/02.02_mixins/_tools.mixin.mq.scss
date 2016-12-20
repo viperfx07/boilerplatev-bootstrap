@@ -32,7 +32,7 @@
             }
         }
          @else if $min==lg-xl {
-            @media (min-width: f-rem($screen-lg) and (max-width: f-rem(1400px)) {
+            @media (min-width: f-rem($screen-lg) and (max-width: f-rem(1400px))) {
                 @content;
             }
         }
