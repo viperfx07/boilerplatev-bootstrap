@@ -7,32 +7,32 @@
             }
         }
         @else if $min==sm {
-            @media (min-width: f-rem($screen-sm)) {
+            @media (min-width: f-rem($screen-sm-min)) {
                 @content;
             }
         }
         @else if $min==sm-md {
-            @media (min-width: f-rem($screen-sm)) and (max-width: f-rem($screen-sm-max))  {
+            @media (min-width: f-rem($screen-sm-min)) and (max-width: f-rem($screen-sm-max))  {
                 @content;
             }
         }
         @else if $min==md {
-            @media (min-width: f-rem($screen-md)) {
+            @media (min-width: f-rem($screen-md-min)) {
                 @content;
             }
         }
         @else if $min==md-lg{
-            @media (min-width: f-rem($screen-md)) and (max-width: f-rem($screen-md-max))  {
+            @media (min-width: f-rem($screen-md-min)) and (max-width: f-rem($screen-md-max))  {
                 @content;
             }
         }
         @else if $min==lg {
-            @media (min-width: f-rem($screen-lg)) {
+            @media (min-width: f-rem($screen-lg-min)) {
                 @content;
             }
         }
-         @else if $min==lg-xl {
-            @media (min-width: f-rem($screen-lg) and (max-width: f-rem(1400px))) {
+        @else if $min==lg-xl {
+            @media (min-width: f-rem($screen-lg-min)) and (max-width: f-rem(1400px)) {
                 @content;
             }
         }
@@ -41,17 +41,17 @@
                 @content;
             }
         }
-        @else if $min=sm-max{
+        @else if $min==sm-max{
             @media (max-width: f-rem($screen-sm-max)){
                 @content;
             }
         }
-        @else if $min=md-max{
+        @else if $min==md-max{
             @media (max-width: f-rem($screen-md-max)){
                 @content;
             }
         }
-        @else if $min=lg-max{
+        @else if $min==lg-max{
             @media (max-width: f-rem(1399px)){
                 @content;
             }
