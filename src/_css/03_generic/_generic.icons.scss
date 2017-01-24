@@ -1,10 +1,11 @@
 // Although the template is similar to FontAwesome,
 // don't use it like .fa.fa-[icon-name].
-// instead just use like v-icon-[icon-name]
-// e.g. .v-icon-facebook (don't need .v-icon.v-icon-facebook)
+// instead just use like g-icon-[icon-name]
+// e.g. .g-icon-facebook (don't need .v-icon.v-icon-facebook)
 
-// DON'T USE "icon" as a class. Adblock Plus apparently  
-// has a CSS rule to hide icon-[social-icons] elements.
+// DON'T USE "icon" as a class. Why? 
+// 1. Adblock Plus apparently has a CSS rule to hide icon-[social-icons] elements.
+// 2. Might conflict with other icon classes.
 
 @font-face {
   font-family: "g-icons";
@@ -18,7 +19,7 @@
   font-style: normal;
 }
 
-[class^="g-icon-"], [class*=" g-icon-"], .g-icon {
+@mixin iconfont {
   //use !important to prevent issues with browser extensions that change fonts
   font-family: 'g-icons' !important;
   speak: none;
@@ -32,6 +33,11 @@
   // Better Font Rendering
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="g-icon-"], [class*=" g-icon-"], .g-icon {
+  //use !important to prevent issues with browser extensions that change fonts
+  @include iconfont;
 }
 
 .g-icon-lg {
@@ -131,7 +137,7 @@ $icon-list: (
 }
 
 //usually this use on pseudo element
-@mixin m-icon($iconName){
-  @extend .g-icon;
+@mixin icon($iconName){
+  @include iconfont;
   content: f-icon($iconName);
 }

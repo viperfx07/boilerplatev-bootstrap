@@ -9,9 +9,9 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
     let dest = path.join(taskTarget, assetsJs);
     let webpackSettings = {
         output: {
-            //path that will be considered when requiring your files
-            //this is used when splitting the codes as well
-            publicPath: assetsJs,
+            // Not using publicPath, because we want to load async js dynamically from the assets folder
+            // where the entry point is located
+            // the publicPath is set dynamically in the main.js
 
             //filename of the main app file
             filename: '[name].js',
@@ -28,7 +28,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
     };
 
 
-    if(args.production){
+    if(args.production && args.production !== 'dev'){
         webpackSettings.devtool = 'source-map';
         webpackSettings.output.filename = config.entries.js;
         webpackSettings.plugins = [ 

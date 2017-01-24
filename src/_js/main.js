@@ -24,6 +24,11 @@ import $ from 'jquery';
 //     }
 // });
 
+// Setting Webpack public path dynamically so that it loads the partials
+// from the folder where the main.js is located
+var bundleSrc = $('[src$="/main.js"]').attr("src");
+__webpack_public_path__ = bundleSrc.substr(0, bundleSrc.lastIndexOf("/") + 1);
+
 $(() => {
     /////////////////////////////////
     // Partial requires example    //

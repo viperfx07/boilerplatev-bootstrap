@@ -1,6 +1,6 @@
 {
-  "name": "boilerplatev",
-  "version": "0.1.0",
+  "name": "boilerplatev-bootstrap",
+  "version": "2.0",
   "devDependencies": {
     "autoprefixer": "latest",
     "babel-core": "^6.5.2",
@@ -57,7 +57,7 @@
     "baseUrl": "./",
     "directories": {
       "source": "src",
-      "destination": "www",
+      "destination": "./",
       "otherWWW": [
         "../test-multisite/WWW_Shared/",
         "../test-multisite/WWW_Site_A/"

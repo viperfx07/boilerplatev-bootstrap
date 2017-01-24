@@ -1,4 +1,4 @@
-@mixin m-sprite($filename){
+@mixin sprite($filename){
 	$filePath:'../_img/sprite/' + $filename + '.png';
 	background: url($filePath);
 	width: width($filePath);

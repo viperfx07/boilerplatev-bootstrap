@@ -1,5 +1,9 @@
 'use strict';
 
+// gulp == gulp serve
+// gulp --production=dev, copy (without minifying JS) to ./Assets (dirs.destionation)
+// gulp --production is copy (with minifying) to ./Assets (dirs.destionation)
+
 import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSyncLib from 'browser-sync';
@@ -28,11 +32,10 @@ wrench.readdirSyncRecursive('./gulp').filter((file) => {
   require('./gulp/' + file)(gulp, plugins, args, config, taskTarget, browserSync, dirs, otherWWW);
 });
 
-// gulp.task('complete',['bower', 'imagemin', 'iconfont', 'fonts', 'sass', 'pug', 'webpack', 'dirsync', 'rootfiles', 'browserSync', 'watch' ]);
-
 // Default task
 gulp.task('default', ['clean'], () => {
   let taskSet = args.production ? 'build' : 'serve';
+  console.log(args.production);
   console.log('Running gulp ' + taskSet);
   gulp.start(taskSet);
 });
@@ -43,7 +46,7 @@ gulp.task('build', [
   'imagemin',
   'iconfont',
   'fonts',
-  'pug',
+  // 'pug',
   'sass',
   'webpack',
 ]);

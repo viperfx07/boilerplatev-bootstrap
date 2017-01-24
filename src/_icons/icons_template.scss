@@ -18,7 +18,7 @@
   font-style: normal;
 }
 
-[class^="<%= className %>-"], [class*=" <%= className %>-"], .<%= className %> {
+@mixin iconfont {
   //use !important to prevent issues with browser extensions that change fonts
   font-family: '<%= fontName %>' !important;
   speak: none;
@@ -32,6 +32,11 @@
   // Better Font Rendering
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="<%= className %>-"], [class*=" <%= className %>-"], .<%= className %> {
+  //use !important to prevent issues with browser extensions that change fonts
+  @include iconfont;
 }
 
 .<%= className %>-lg {
@@ -129,7 +134,7 @@ $icon-list: (
 }
 
 //usually this use on pseudo element
-@mixin m-icon($iconName){
-  @extend .<%= className %>;
+@mixin icon($iconName){
+  @include iconfont;
   content: f-icon($iconName);
 }

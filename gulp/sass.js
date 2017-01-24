@@ -6,9 +6,9 @@ import gulpif from 'gulp-if';
 import atImport from 'postcss-import';
 import sprites from 'postcss-sprites';
 import assets from 'postcss-assets';
-import oldie from 'oldie';
 import pxtorem from 'postcss-pxtorem';
 import rucksack from 'rucksack-css';
+import cssnano from 'cssnano';
 
 export default function(gulp, plugins, args, config, taskTarget, browserSync, dirs) {
   let entries = config.entries;
@@ -19,7 +19,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
     gulp.src(path.join(dirs.source, dirs.styles, entries.css))
       .pipe(plugins.plumber())
       .pipe(plugins.sourcemaps.init())
-      .pipe(plugins.cssGlobbing({	extensions: ['.scss']	}))
+      .pipe(plugins.cssGlobbing({ extensions: ['.scss'] }))
       .pipe(plugins.sass({
         precision: 10,
         includePaths: [
@@ -29,7 +29,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
         ]
       }).on('error', plugins.sass.logError))
       .pipe(plugins.postcss([
-          autoprefixer({browsers: ['last 2 version', '> 5%', 'safari 5', 'ios 6', 'android 4', 'ie 9']}),
+          autoprefixer({browsers: ['last 2 version', '> 5%', 'safari 5', 'ios 6', 'android 4', 'ie >= 9']}),
           rucksack({reporter: true}),
           pxtorem({replace: false}),
           atImport(),
@@ -47,6 +47,20 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
 
                 return Promise.resolve();
             } 
+          }),
+          cssnano({
+            rebase: false,
+            discardComments: {removeAll: true},
+            minifyFontValues: true,
+            filterOptimiser: true,
+            functionOptimiser: true,
+            minifyParams: true,
+            normalizeUrl: true,
+            reduceBackgroundRepeat: true,
+            convertValues: true,
+            discardEmpty: true,
+            minifySelectors: true,
+            reduceInitial: true
           })
         ]))
       .pipe(plugins.rename(function(path) {
@@ -54,11 +68,8 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
         // Ex: 'src/_styles' --> '/styles'
         path.dirname = path.dirname.replace(dirs.source, '').replace('_', '');
       }))
-      .pipe(plugins.cssnano({rebase: false}))
       .pipe(plugins.sourcemaps.write('./'))
       .pipe(gulp.dest(dest))
       .pipe(browserSync.stream({match: '**/*.css'}));
   });
 }
-
-

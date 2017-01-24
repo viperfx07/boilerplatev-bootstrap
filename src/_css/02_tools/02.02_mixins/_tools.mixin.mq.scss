@@ -1,4 +1,4 @@
-@mixin m-bp($min: 0, $max: 0) {
+@mixin mq($min: 0, $max: 0) {
     $type: type-of($min);
     @if $type==string {
         @if $min==xs {
@@ -71,11 +71,5 @@
         @media #{$query} {
             @content;
         }
-    }
-}
-
-@mixin mq($min:0, $max: 0){
-    @include m-bp($min, $max){
-        @content;
     }
 }

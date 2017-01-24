@@ -6,7 +6,7 @@ An extensive HTML5 framework for building robust web sites utilising [Pug](https
 >- gulp-sass though using node-sass options, can't make a sourcemap without gulp-sourcemaps
 >- for browsersync, because using node-gyp, see INSTALLATION part on https://github.com/nodejs/node-gyp
 >   P.S On my home machine (Win10), it works fine without installing the requirements
->- To install latest and save to dev a module => npm i -D <module>@latest
+>- To install latest and save to dev a module => yarn add <module>@latest --dev
 
 ##Requirements
 1. Node = use the latest version
@@ -17,7 +17,7 @@ An extensive HTML5 framework for building robust web sites utilising [Pug](https
 ##Getting Started
 1. npm install -g **yarn** (if you have no **yarn** installed)
 2. yarn 
-3. gulp (add --production for the production (minified) codes)
+3. gulp (please see futher notes for production codes)
 
 ```
 ├── gulp/                      # Folder for gulp tasks
@@ -111,9 +111,9 @@ The structure:
 
 I'm using gulp-iconfont to generate fonts. The SCSS file is generated from the src\_icons\icons_template.scss, which results in 03\_generic/\_generic.icons.scss. 
 
-The icons scss follows the Font-Awesome standard, so use it like when you use Font-Awesome, but instead of using .fa, you need to use .icon. 
+The icons scss follows the Font-Awesome standard, so use it like when you use Font-Awesome, but instead of using .fa, you need to use .g-icon. 
 
-Although the template is similar to **FontAwesome**,  don't use it like .fa.fa-[icon-name], instead just use like **.icon-[icon-name]** e.g. .icon-facebook (don't need .icon.icon-facebook). 
+Although the template is similar to **FontAwesome**,  don't use it like .fa.fa-[icon-name], instead just use like **.g-icon-[icon-name]** e.g. .g-icon-facebook (don't need .icon.icon-facebook). 
 
 **Notes** 
 "icon" as a class. **Adblock Plus** apparently has a CSS rule to hide icon-[social-icons] elements. This happens for other classes like .footer-[social] as well
@@ -131,10 +131,7 @@ I'm using [postcss-sprites](https://github.com/2createStudio/postcss-sprites) pl
 
 ### Tools/Mixins/Functions
 **Important**:
-
-1. All user-created functions must use f-*function-name* name convention, e.g. color: **f-color()** and put in **src/scss/02_tools/** folder and named **_tools.function.*function-name*.scss**.
-2. All user-created mixins need to use m-*mixin-name* name convention: **@include m-icon()**. and put in **src/scss/02_tools/** folder and named **_tools.mixin.*mixin-name*.scss**
-3. Foundation mixins found [here](http://foundation.zurb.com/sites/docs/sass-mixins.html) (if using Foundation).
+Foundation mixins found [here](http://foundation.zurb.com/sites/docs/sass-mixins.html) (if using Foundation).
 
 Notes:
 It hasn't had any setup the task to generate more than 1 sprite. Please see [here](https://github.com/2createStudio/postcss-sprites) for reference.
@@ -144,19 +141,14 @@ It hasn't had any setup the task to generate more than 1 sprite. Please see [her
 
 ## Gulp Workflow
 
+### `gulp --production=dev`
+Builds and copies out files through compilation of preprocessors (Pug, Sass, etc), Javascript, and optimization of images to the destionation folder (set in `packages.json` under `CUSTOM CONFIGURATION`). _Run this to copy assets to __Assets__ folder in __DEVELOPMENT__ environment_
+
 ### `gulp --production`
-Runs [`gulp test`](#gulp-test) and builds out an optimized site through compilation of preprocessors (Pug, Sass, etc), minification of CSS and HTML, uglification of Javascript, and optimization of images.
+Builds and copies out an optimized site through compilation of preprocessors (Pug, Sass, etc), minification of CSS and HTML, uglification of Javascript, and optimization of images.  _Run this to copy assets to __Assets__ folder in __PRODUCTION__ environment_
 
-### `gulp serve`
+### `gulp`
 Starts up a development server that watches files and automatically reloads them to the browser when a change is detected.
-
-**Extra Task Target(s)**
-
-|Tasks| Description
-|---------|-------
-|`gulp serve --production`|  starts up a server that loads a production version of the site
-|`gulp serve --open`|  starts up a server and opens it within your default browser
-
 
 ## Issues / Todo
 
@@ -172,7 +164,7 @@ Starts up a development server that watches files and automatically reloads them
 This will allow the users to copy the tmp directory to single or multiple other directories (i.e sites directories).
 To run this task, type `gulp copy_otherWWW`. But before making and copying js/css to multiple directories/sites, make sure you check the other two tips below. This will prevent duplication that gives you a headache and hard to manage codes.
 
-2. **_CSS-wise**, it's BEST to use **ONE main.css** for all of the sites and using theme for specific site.
+2. **CSS-wise**, it's BEST to use **ONE main.css** for all of the sites and using theme for specific site.
 For example, **siteA** has a theme class **theme--siteA**, while siteB has **theme--siteB** class in the body so that the users can just those classes
 
 3. **JS-wise**, it's BEST to use **ONE main.js** for all of the sites and using **require** to import the specific-site script into the **main.js asynchronously**.
