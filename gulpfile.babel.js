@@ -35,7 +35,6 @@ wrench.readdirSyncRecursive('./gulp').filter((file) => {
 // Default task
 gulp.task('default', ['clean'], () => {
   let taskSet = args.production ? 'build' : 'serve';
-  console.log(args.production);
   console.log('Running gulp ' + taskSet);
   gulp.start(taskSet);
 });

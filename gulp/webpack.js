@@ -42,7 +42,8 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
       return gulp.src(path.join(dirs.source, dirs.scripts, config.entries.js))
         .pipe(plugins.plumber())
         .pipe(webpackStream(webpackSettings))
-        .pipe(gulp.dest(dest));
+        .pipe(gulp.dest(dest))
+        .on('end', browserSync.reload);
     });
 
 }
