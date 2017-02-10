@@ -1,11 +1,10 @@
 // Although the template is similar to FontAwesome,
 // don't use it like .fa.fa-[icon-name].
-// instead just use like g-icon-[icon-name]
-// e.g. .g-icon-facebook (don't need .v-icon.v-icon-facebook)
+// instead just use like v-icon-[icon-name]
+// e.g. .v-icon-facebook (don't need .v-icon.v-icon-facebook)
 
-// DON'T USE "icon" as a class. Why? 
-// 1. Adblock Plus apparently has a CSS rule to hide icon-[social-icons] elements.
-// 2. Might conflict with other icon classes.
+// DON'T USE "icon" as a class. Adblock Plus apparently  
+// has a CSS rule to hide icon-[social-icons] elements.
 
 @font-face {
   font-family: "g-icons";

@@ -5,10 +5,12 @@ import path from 'path';
 import foldero from 'foldero';
 import pug from 'pug';
 import pugIncludeGlob from 'pug-include-glob';
+import emmity from 'emitty';
 
 export default function(gulp, plugins, args, config, taskTarget, browserSync, dirs) {
   let dest = path.join(taskTarget);
   let dataPath = path.join(dirs.source, dirs.data);
+  const emm = emmity.setup(dirs.source, 'pug');
 
   // pug template compile
   gulp.task('pug', () => {
@@ -21,7 +23,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
         loader: function loadAsString(file) {
           let json = {};
           try {
-          	json = JSON.parse(fs.readFileSync(file, 'utf8'));
+            json = JSON.parse(fs.readFileSync(file, 'utf8'));
           }
           catch(e) {
             console.log('Error Parsing JSON file: ' + file);
@@ -46,8 +48,8 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
       path.join(dirs.source, '**/*.pug'),
       '!' + path.join(dirs.source, '{**/\_*,**/\_*/**}')
     ])
-    .pipe(plugins.changed(dest))
     .pipe(plugins.plumber())
+    .pipe(plugins.if(global.isWatching, emm.stream()))
     .pipe(plugins.pug({
       pug: pug,
       pretty: true,
