@@ -6,7 +6,6 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
     browserSync.init({
       open: 'local',
       startPath: config.baseUrl,
-      port: config.port || 3000,
       server: {
         baseDir: taskTarget,
         routes: (() => {
