@@ -187,6 +187,9 @@
         &i {
             display: inline;
         }
+        &n{
+            display: none;
+        }
     }
     // Vertical Align
     &-va {
@@ -259,6 +262,14 @@
         // Border color
         &-bdc-#{$c} {
             border-color: $hex;
+        }
+
+        &-s-#{$c}{
+            stroke: $hex;
+        }
+
+        &-f-#{$c}{
+            fill: $hex;
         }
     }
 }

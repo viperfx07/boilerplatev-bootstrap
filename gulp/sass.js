@@ -3,7 +3,6 @@
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 import gulpif from 'gulp-if';
-import atImport from 'postcss-import';
 import sprites from 'postcss-sprites';
 import assets from 'postcss-assets';
 import pxtorem from 'postcss-pxtorem';
@@ -32,7 +31,6 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
           autoprefixer({browsers: ['last 2 version', '> 5%', 'safari 5', 'ios >= 8', 'android 4', 'ie >= 9']}),
           rucksack({reporter: true}),
           pxtorem({replace: false}),
-          atImport(),
           assets({
             loadPaths: [path.join(dirs.source, dirs.images)]
           }),

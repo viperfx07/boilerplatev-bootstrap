@@ -10,13 +10,13 @@ block includes
 	include ../_mixins/**/*.pug
 
 doctype
-<!--[if IE 7]>
-<html class="no-js lt-ie9 lt-ie8">
-<![endif]-->
 <!--[if IE 8]>
-<html class="no-js lt-ie9">
+<html class="no-js lt-ie10 lt-ie9">
 <![endif]-->
-!= "<!--[if gt IE 8]><!-->"
+<!--[if IE 9]>
+<html class="no-js lt-ie10">
+<![endif]-->
+!= "<!--[if gt IE 9]><!-->"
 html.no-js
 	!= "<!--<![endif]-->"
 	head
@@ -24,6 +24,7 @@ html.no-js
 		meta(http-equiv='X-UA-Compatible', content='IE=edge')
 		
 		meta(content="#",name="description")
+		meta(content="#4285f4", name="theme-color")
 		meta(content="Victor Tanudjaja",name="author")
 		
 		//-# Mobile Viewport Scaling
@@ -31,7 +32,6 @@ html.no-js
 		meta(content="320",name="MobileOptimized")
 		meta(content="width=device-width,initial-scale=1",name="viewport")
 		meta(content="no",name="user-scalable")
-		meta(content="on",http-equiv="cleartype")
 		//-#
 
 		title BoilerplateV
@@ -53,10 +53,8 @@ html.no-js
 			block footer
 				include ../_partials/footer.pug
 		
-		script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js")
-		<!--[if lt IE 10]>
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/flexibility/1.0.6/flexibility.js")
-		<![endif]-->
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.6/vue.min.js")
 		script(src="https://cdn.polyfill.io/v2/polyfill.min.js")
 		
 		//- how to make it read the arguments

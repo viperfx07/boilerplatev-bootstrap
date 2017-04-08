@@ -157,6 +157,8 @@ Starts up a development server that watches files and automatically reloads them
 
 2. Sometimes, browsersync doesn't reload, even though there's no error
 
+3. postcss-import 9.1.0 had an issue with webpack 2.3.3 (https://github.com/webpack/webpack/issues/2411#issuecomment-247313388)
+
 
 ## Multiple Sites
 

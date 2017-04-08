@@ -25,11 +25,17 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync, di
       let stream = gulp.src([
         path.join(taskTarget, '**/*'),
         '!' + path.join(taskTarget, '{**/\_*,**/\_*/**}'),
+        '!' + path.join(taskTarget, '**/*.html'),
+        '!' + path.join(taskTarget, '**/*.md'),
       ])
       .pipe(plugins.changed(item))
       .pipe(gulp.dest(item));
       streams.push(stream);
     });
+
+    if(!args.production){
+      plugins.notify({title:config.name, message: 'copy_otherWWW done'}).write('');
+    }
 
     return merge(streams);
   });
